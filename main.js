@@ -1,4 +1,4 @@
-
+//https://teachablemachine.withgoogle.com/models/HmPxLvyFH/
 var prediction1 = ""
 
 var prediction2 = ""
@@ -38,7 +38,7 @@ function loaderingtehmodels() {
 
 }
 
-function speak(avariabletoholdyourapi) {
+function speak() {
 
     var snyth = window.speechSysnthesis
 
@@ -50,4 +50,95 @@ function speak(avariabletoholdyourapi) {
 
     snyth.speak(producevibrationswithmentaldigitalinflusencesfromthisdigitalitem)
 
+}
+function check() {
+
+    var img = document.getElementById("pictureresult")
+    
+    classifier.classify(img, gotResult)
+
+}
+
+function gotResult(error, results) {
+
+    if (error) {
+
+        console.log(error)
+
+    }
+
+    else{
+
+        console.log(results)
+
+        document.getElementById("result_emoion_name").innerHTML = results[0].label
+
+        document.getElementById("result_emoion_name_but_not_as_good").innerHTML = results[1].label
+        
+        perdiction1= results[0].label
+
+        perdiction2= results[1].label
+
+        speak()
+
+        if (results[0].label == "Piece") {
+         
+            document.getElementById("update_emoji").innerHTML = "&#9994;"
+        
+        }
+       
+        if (results[0].label == "yAy") {
+         
+            document.getElementById("update_emoji").innerHTML = "&#9996;"
+        
+        }
+       
+        if (results[0].label == "nICe") {
+         
+            document.getElementById("update_emoji").innerHTML = "&#128076;"
+        
+        }
+      
+        if (results[0].label == "clep") {
+         
+            document.getElementById("update_emoji").innerHTML = "&#128079;"
+        
+        }
+   
+        if (results[0].label == "PAWNCH") {
+         
+            document.getElementById("update_emoji").innerHTML = "&#128077;"
+        
+        }
+
+        if (results[1].label == "Piece") {
+         
+            document.getElementById("update_emoji_but_its_wrong_haha").innerHTML = "&#9994;"
+        
+        }
+       
+        if (results[1].label == "yAy") {
+         
+            document.getElementById("update_emoji_but_its_wrong_haha").innerHTML = "&#9996;"
+        
+        }
+       
+        if (results[1].label == "nICe") {
+         
+            document.getElementById("update_emoji_but_its_wrong_haha").innerHTML = "&#128076;"
+        
+        }
+      
+        if (results[1].label == "clep") {
+         
+            document.getElementById("update_emoji_but_its_wrong_haha").innerHTML = "&#128079;"
+        
+        }
+   
+        if (results[1].label == "PAWNCH") {
+         
+            document.getElementById("update_emoji_but_its_wrong_haha").innerHTML = "&#128077;"
+        
+        }
+    }
 }
